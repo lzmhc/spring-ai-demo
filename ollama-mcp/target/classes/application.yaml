@@ -1,0 +1,19 @@
+# 大模型配置
+spring:
+  ai:
+    ollama:
+      base-url: https://sakura2.dreamsoul.cn:45093/
+      chat:
+        options:
+          model: qwen3:8b
+    mcp:
+      server:
+        name: webflux-mcp-server
+        version: 1.0.0
+        type: ASYNC
+        enabled: true
+        sse-endpoint: /sse
+        sse-message-endpoint: /mcp/message
+server:
+  port: 8182
+  address: 0.0.0.0

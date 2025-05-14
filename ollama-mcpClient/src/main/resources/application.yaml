@@ -1,0 +1,32 @@
+# 大模型配置
+spring:
+  ai:
+    ollama:
+      base-url: https://sakura2.dreamsoul.cn:45093/
+      chat:
+        options:
+          model: qwen3:8b
+    mcp:
+      client:
+        enable: true
+        type: ASYNC
+        sse:
+          connections:
+            server1:
+              url: http://localhost:8181
+#            brave-search:
+#              command: npx
+#              args:
+#                - "-y"
+#                - "@modelcontextprotocol/server-brave-search"
+#              env:
+#                  BRAVE_API_KEY: ${BRAVE_API_KEY}
+#            filesystem:
+#              command: npx
+#              args:
+#                - "-y"
+#                - "@modelcontextprotocol/server-filesystem"
+#                - "./"
+server:
+  port: 8183
+  address: 0.0.0.0

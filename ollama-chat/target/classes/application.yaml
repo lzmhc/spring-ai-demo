@@ -1,0 +1,124 @@
+# 大模型配置
+spring:
+  ai:
+    vectorstore:
+      pgvector:
+        dimensions: 768
+    ollama:
+      base-url: https://sakura2.dreamsoul.cn:45093/
+#      base-url: http://localhost:11434/
+      embedding:
+        options:
+          model: nomic-embed-text:latest
+    mcp:
+      server:
+        name: webflux-mcp-server
+        version: 1.0.0
+        type: ASYNC
+        enabled: true
+        sse-endpoint: /sse
+        sse-message-endpoint: /mcp/message
+#  main:
+#    web-application-type: reactive
+  # mybatis mysql
+  datasource:
+    dynamic:
+      primary: postgresql
+      strict: false
+      datasource:
+        postgresql:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://localhost:5432/postgres
+          username: postgres
+          password: 10190958mhc
+        mysql:
+          url: jdbc:mysql://127.0.0.1:3306/Qingjin?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+          username: root
+          password: 10190958mhc
+          driver-class-name: com.mysql.jdbc.Driver
+  # QQ邮箱
+  mail:
+    host: smtp.qq.com
+    username: lzmhc.top@foxmail.com
+    password: cvidtiyczlzfdecd
+    from: lzmhc.top@foxmail.com
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+    default-encoding: utf-8
+  #配置上传文件大小
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  # redis
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      time: 10s
+      lettuce:
+        pool:
+          max-active: 200
+          max-wait: -1ms
+          max-idle: 10
+          min-idle: 0
+# QQ 登录配置
+sa-token:
+  # token 名称（同时也是 cookie 名称）
+  token-name: satoken
+  # token 有效期（单位：秒） 默认30天，-1 代表永久有效
+  timeout: 43200
+  # token 最低活跃频率（单位：秒），如果 token 超过此时间没有访问系统就会被冻结，默认-1 代表不限制，永不冻结
+  active-timeout: -1
+  # 是否允许同一账号多地同时登录 （为 true 时允许一起登录, 为 false 时新登录挤掉旧登录）
+  is-concurrent: true
+  # 在多人登录同一账号时，是否共用一个 token （为 true 时所有登录共用一个 token, 为 false 时每次登录新建一个 token）
+  is-share: true
+  # token 风格（默认可取值：uuid、simple-uuid、random-32、random-64、random-128、tik）
+  token-style: uuid
+  # 是否输出操作日志
+  is-log: true
+  jwt-secret-key: 6IlkIHKi70w0OJXmBve1Uxwg+nmKGmuGK400r97BE7k=
+  oauth2:
+    qq:
+      client-id: 102685776
+      client-secret: Rkwuc5UfdPzSkvum
+      redirect-uri: https://lzmhc.top:18181/connection
+      scopes: get_user_info  # 申请的权限范围
+# minio 存储
+minio:
+  endpoint: https://lzmhc.top:19009
+  accessKey: fI4WRz30HR1hr0dQdSWd
+  secretKey: lSyMXA60IBr0aROtqrU9hk7iXJPNKzAqOq2GwkSr
+  bucketName: lobechat
+server:
+  port: 8181
+  address: 0.0.0.0
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.lzmhc.mapper.mysql.mapper: debug
+
+chat:
+  simple:
+    model: qwen3:8b
+#    model: deepseek-r1:7b
+  qwen:
+    model: qwen3:8b
+  embedding:
+    model: nomic-embed-text:latest
+  multimodal:
+    model: chevalblanc/gpt-4o-mini:latest
+#    model: minicpm-v:latest
+  longContext:
+    model: mistral-nemo:latest

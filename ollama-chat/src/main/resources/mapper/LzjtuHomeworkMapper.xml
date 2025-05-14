@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzmhc.mapper.mysql.mapper.LzjtuHomeworkMapper">
+
+    <!-- 查询结果列 -->
+    <sql id="base_columns">
+        lzjtu_homework.id,
+        lzjtu_homework.title,
+        lzjtu_homework.description,
+        lzjtu_homework.publish_time,
+        lzjtu_homework.deadline,
+        lzjtu_commit_homework.status,
+        lzjtu_homework.file,
+        t_file.file_name,
+        t_file.file_key
+    </sql>
+
+    <!-- 分页查询 -->
+    <select id="queryPage" resultType="com.lzmhc.dto.HomeWorkDTO">
+        SELECT
+        <include refid="base_columns"/>
+        FROM lzjtu_commit_homework
+        LEFT JOIN lzjtu_homework ON lzjtu_commit_homework.homework_id = lzjtu_homework.id
+        LEFT JOIN t_file ON lzjtu_homework.file = t_file.file_id
+        where lzjtu_homework.publish_time &lt;= NOW() and lzjtu_commit_homework.student_id = #{openid};
+    </select>
+
+    <update id="commitHomework" >
+        UPDATE lzjtu_commit_homework SET
+            commit_time = #{params.commitTime},
+            file_id = #{params.fileId},
+            remark = #{params.remark},
+            status = #{params.status}
+        where homework_id = #{params.homeworkId} AND student_id = #{params.studentId}
+    </update>
+</mapper>
