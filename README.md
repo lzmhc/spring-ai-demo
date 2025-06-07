@@ -10,14 +10,6 @@
 
 此仓库只是目前的半成品，能力有限，开发难度较大，仅供参考学习
 
-如有问题可联系：
-
-QQ：2910463910
-
-微信：mhc2910463910
-
-邮箱：lzmhc.top@foxmail.com
-
 #### 部署运行
 ```
 # JDK17 //springai最低版本17
@@ -107,3 +99,5 @@ ChatClient.builder(chatModel).defaultTools(asyncMcpToolCallbackProvider.getToolC
 [dynamic-datasource](https://github.com/baomidou/dynamic-datasource)
 
 [ragdemo](https://github.com/jianyuan1991/ragdemo)
+
+<a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=J0tdSk9ECVNIV2dBSF9KRk5LCURISg" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_21.png"/></a>
