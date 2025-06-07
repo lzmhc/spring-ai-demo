@@ -100,4 +100,4 @@ ChatClient.builder(chatModel).defaultTools(asyncMcpToolCallbackProvider.getToolC
 
 [ragdemo](https://github.com/jianyuan1991/ragdemo)
 
-<a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=J0tdSk9ECVNIV2dBSF9KRk5LCURISg" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_21.png"/></a>
+邮箱：lzmhc.top@foxmail.com
